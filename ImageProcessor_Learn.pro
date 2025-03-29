@@ -15,10 +15,12 @@ LIBS += /usr/local/lib/libopencv_*.so \
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    opencvImageProcessor.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    opencvImageProcessor.h
 
 FORMS += \
     mainwindow.ui

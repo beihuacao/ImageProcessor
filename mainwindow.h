@@ -42,6 +42,7 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
+    bool process_mode = false;
     Mat image_raw, image_result, image_reduced;
     QImage image_qt, image_qt_result, image_qt_reduced;
     Mat gradXY, theta;
@@ -134,6 +135,10 @@ private slots:
     void on_canny_1_clicked();
 
     void on_noise_clicked();
+
+
+    void on_opencv_mode_clicked();
+    void on_raw_mode_clicked();
 private:
     Ui::MainWindow* ui;
 };

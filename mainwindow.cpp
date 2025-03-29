@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "opencvImageProcessor.h"
+
 cv::Mat QImage2cvMat(QImage &image, bool rb_swap)
 {
     cv::Mat mat;
@@ -169,6 +171,10 @@ MainWindow::MainWindow(QWidget* parent)
     buttonGroup2->addButton(ui->laplace_1);
     buttonGroup2->addButton(ui->laplace_reduce);
     buttonGroup2->addButton(ui->laplace_edge);
+
+    QButtonGroup* buttonGroup3 = new QButtonGroup(this);
+    buttonGroup3->addButton(ui->opencv_mode);
+    buttonGroup3->addButton(ui->raw_mode);
 
     filename = "/home/cdy/qtProject/ImageProcessor_Learn/images/lena1.jpg";
     if( !(image_qt.load(filename) )) {
@@ -1195,4 +1201,14 @@ void MainWindow::on_noise_clicked() {
     image_qt_result = cvMat2QImage(image_raw,true);
     ui->label->setPixmap(QPixmap::fromImage(image_qt_result));
     ui->stackedWidget_2->setCurrentIndex(1);
+}
+
+void MainWindow::on_opencv_mode_clicked() {
+    process_mode = true;
+    qDebug() << "true";
+}
+
+void MainWindow::on_raw_mode_clicked() {
+    process_mode = false;
+    qDebug() << "false";
 }
